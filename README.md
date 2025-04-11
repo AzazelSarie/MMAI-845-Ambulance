@@ -19,6 +19,7 @@ The system prioritizes critical patients while efficiently managing ambulance ca
 
 ## Project Structure
 - `final_model_small_fixes.py`: Main implementation with environment definition and PPO training
+- `Simulation.py`: An interactive visualization of the model's performance
 - `ppo_modified_taxi_best.zip`: Directory containing saved model checkpoints
 
 ## Environment
@@ -173,6 +174,21 @@ while not done:
         env.render()
 ```
 
+Interactive Simulation
+For an interactive visualization of the model's performance, run:
+```python
+# Run the simulation with the best model
+python simulation.py --model models/ppo_modified_taxi_best.zip --render human
+
+# Run the simulation with specific parameters
+python simulation.py --model models/ppo_modified_taxi_best.zip --patients 5 --critical-deadline 20 --non-critical-deadline 40 --render human
+```
+The simulation provides:
+- Color-coded visualization (critical patients in orange, non-critical in blue)
+- Real-time statistics on patient wait times and outcomes
+- Option to compare different models or parameters
+- Manual intervention mode for dispatcher training
+
 ## Future Work
 - Multi-agent reinforcement learning for fleet coordination
 - Integration with real-world GIS and traffic data
@@ -191,11 +207,9 @@ If you use this code in your research, please cite:
   howpublished = {\url{https://github.com/AzazelSarie/emergroute-ai}}
 }
 ```
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Development Process
+This project was developed with assistance from AI tools including Gemini, Claude, and GPT. These tools helped with code generation, debugging, and documentation. The project concept, direction, implementation decisions, and testing were performed by me.
 
 ## Acknowledgments
 - This project builds upon the Taxi environment from Gymnasium
 - Thanks to the Stable Baselines 3 team for their excellent RL implementations
-- Research supported by literature from Pons et al. (2005) and Blackwell & Kaufman (2002)
